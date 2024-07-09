@@ -89,14 +89,11 @@ function buildMetadata(sample) {
   d3.json("https://static.bc-edx.com/data/dl-1-2/m14/lms/starter/samples.json").then((data) => {
     
   console.log(sample)
+  console.log(data)
   // Get the metadata for the selected sample
-    let metadata =  metadata.filter(sampleObj => sampleObj.id == sample);
-    let result = resultArray[0];
-    //=data.metadata.find(item => item.id === sample.toString());
-//????????
-                
-//????????/
 
+  let metadata = data.metadata.filter(sampleObj => sampleObj.id == sample)[0];
+    
 
     // Select the panel where metadata will be displayed
     let metadataPanel = d3.select("#sample-metadata");
@@ -124,6 +121,15 @@ function buildMetadata(sample) {
 
 
 
+
+
+
+
+
+
+
+
+
 // Function to build charts
 function buildCharts(sample) {
   d3.json("https://static.bc-edx.com/data/dl-1-2/m14/lms/starter/samples.json").then((data) => {
@@ -139,22 +145,6 @@ function buildCharts(sample) {
     let sampleValues = sampleData.sample_values;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     // Build a Bubble Chart
     // (Implementation of Bubble Chart creation goes here)
     function buildBubbleChart(sampleData) {
@@ -164,11 +154,12 @@ function buildCharts(sample) {
         text: sampleData.otu_labels,
         mode: 'markers',
         marker: {
-          size: sampleData.sample_values,  // Marker size based on sample values
-          color: sampleData.otu_ids,       // Marker color based on OTU ids
-          colorscale: 'Earth'              // Color scale for markers
+          size: sampleData.sample_values,
+          color: sampleData.otu_ids,
+          colorscale: 'Earth'
         }
       };
+
      // Define data array for the plot
   let data = [trace];
 
@@ -187,7 +178,7 @@ function buildCharts(sample) {
 // Inside your buildCharts function, after extracting necessary data
 // Call the function to build the bubble chart
 buildBubbleChart(sampleData);
-
+buildCharts("sample_id_here");
 
 
 
