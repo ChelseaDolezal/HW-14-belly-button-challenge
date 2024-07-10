@@ -28,6 +28,17 @@ function init() {
       let namesField = data.metadata.map(item => item.id); 
       console.log("Sample names:", namesField);
     
+
+      // Get the first sample from the list
+      let firstSampleId = namesField[0];
+      console.log("First sample:", firstSampleId);
+
+      // Build charts and metadata panel with the first sample
+      buildCharts(firstSampleId); 
+      buildMetadata(firstSampleId); // Function to populate metadata panel
+
+
+
       // Populate dropdown options with sample names
       namesField.forEach((name) => {
         dropdown.append("option")
@@ -40,28 +51,6 @@ function init() {
 
 
     
-/////////////////////// Use the list of sample names to populate the select options
-//sampleNames.forEach((sample) => {
-//d3.select
-    //.append('option')
-    //.text(sample)
-    //.property('value', sample);
-
-
-
-
-
-
-
-
-      // Get the first sample from the list
-      let firstSampleId = namesField[0];
-      console.log("First sample:", firstSampleId);
-
-      // Build charts and metadata panel with the first sample
-      buildCharts(firstSampleId); 
-      buildMetadata(firstSampleId); // Function to populate metadata panel
-
       // Event listener for dropdown change
       dropdown.on("change", function(event) {
         let selectedSampleId = event.target.value;
@@ -128,7 +117,7 @@ function buildMetadata(sample) {
 
 
 
-
+/////////////////////////////
 
 // Function to build charts
 function buildCharts(sample) {
@@ -145,9 +134,12 @@ function buildCharts(sample) {
     let sampleValues = sampleData.sample_values;
 
 
+
+
+
     // Build a Bubble Chart
     // (Implementation of Bubble Chart creation goes here)
-    function buildBubbleChart(sampleData) {
+  function buildBubbleChart(sampleData) {
       let trace = {
         x: sampleData.otu_ids,
         y: sampleData.sample_values,
@@ -159,7 +151,7 @@ function buildCharts(sample) {
           colorscale: 'Earth'
         }
       };
-
+console.log("buildBubbleChar")
      // Define data array for the plot
   let data = [trace];
 
@@ -175,21 +167,13 @@ function buildCharts(sample) {
   Plotly.newPlot('bubble', data, layout);
 }
 
+
+
+
 // Inside your buildCharts function, after extracting necessary data
 // Call the function to build the bubble chart
-buildBubbleChart(sampleData);
-buildCharts("sample_id_here");
-
-
-
-
-
-
-
-
-
-
-
+//buildBubbleChart(sampleData);
+//buildCharts("");
 
 
 
