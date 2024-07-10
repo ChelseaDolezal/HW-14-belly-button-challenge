@@ -1,21 +1,5 @@
 
 
-
-
-
-
-
-
-//////////////////////////////
-// NEW CODE STARTS HERE:
-//////////////////////////////
-
-
-
-
-
-
-
 // Function to populate dropdown and initialize dashboard
 function init() {
   // Select the dropdown element
@@ -35,7 +19,7 @@ function init() {
 
       // Build charts and metadata panel with the first sample
       buildCharts(firstSampleId); 
-      buildMetadata(firstSampleId); // Function to populate metadata panel
+      buildMetadata(firstSampleId); 
 
 
 
@@ -65,9 +49,7 @@ function init() {
     
       console.log("No metadata found or metadata is empty.");
     }
-  //.catch((error) => {
-    //console.error("Error loading JSON:", error);
-  //});
+  
 }
 
 
@@ -77,8 +59,7 @@ function init() {
 function buildMetadata(sample) {
   d3.json("https://static.bc-edx.com/data/dl-1-2/m14/lms/starter/samples.json").then((data) => {
     
-  console.log(sample)
-  console.log(data)
+ 
   // Get the metadata for the selected sample
 
   let metadata = data.metadata.filter(sampleObj => sampleObj.id == sample)[0];
@@ -109,16 +90,6 @@ function buildMetadata(sample) {
 }
 
 
-
-
-
-
-
-
-
-
-/////////////////////////////
-
 // Function to build charts
 function buildCharts(sample) {
   d3.json("https://static.bc-edx.com/data/dl-1-2/m14/lms/starter/samples.json").then((data) => {
@@ -136,9 +107,7 @@ function buildCharts(sample) {
 
 
 
-
     // Build a Bubble Chart
-    // (Implementation of Bubble Chart creation goes here)
   function buildBubbleChart(sampleData) {
       let trace = {
         x: sampleData.otu_ids,
@@ -168,18 +137,7 @@ console.log("buildBubbleChar")
 }
 
 
-
-
-// Inside your buildCharts function, after extracting necessary data
-// Call the function to build the bubble chart
-//buildBubbleChart(sampleData);
-//buildCharts("");
-
-
-
-
-    // Build a Bar Chart
-    // (Implementation of Bar Chart creation goes here)
+    
 // Function to build bar chart
 function buildBarChart(sampleData) {
   // Sort the sample values in descending order
@@ -210,16 +168,8 @@ function buildBarChart(sampleData) {
   Plotly.newPlot('bar', data, layout);
 }
 
-// Inside your buildCharts function, after extracting necessary data
 // Call the function to build the bar chart
 buildBarChart(sampleData);
-
-
-
-
-
-
-
 
 
     // Render charts
